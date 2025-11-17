@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.8.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-16f2d45660785d30a16dc47c19593870"}, "mark": {"type": "line", "point": true, "strokeWidth": 3}, "encoding": {"color": {"field": "Metric", "scale": {"domain": ["Home Value", "Income"], "range": ["#e74c3c", "#2ecc71"]}, "type": "nominal"}, "tooltip": [{"field": "Year", "type": "quantitative"}, {"field": "Metric", "type": "nominal"}, {"field": "Value", "format": "$,.0f", "type": "quantitative"}], "x": {"field": "Year", "scale": {"domain": [2000, 2017]}, "title": "Year", "type": "ordinal"}, "y": {"field": "Value", "title": "Dollar Amount ($)", "type": "quantitative"}}, "height": 300, "title": "Economic Changes - Census Tract 205", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-16f2d45660785d30a16dc47c19593870": [{"Year": 2000, "Metric": "Home Value", "Value": 87499.9969}, {"Year": 2017, "Metric": "Home Value", "Value": 239600.0}, {"Year": 2000, "Metric": "Income", "Value": 28146.998839999997}, {"Year": 2017, "Metric": "Income", "Value": 55208.0}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.8.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-dc96a716b769c219b2fdaf61ba325b71"}, "mark": {"type": "bar"}, "encoding": {"color": {"value": "#e74c3c"}, "tooltip": [{"field": "City", "type": "nominal"}, {"field": "Tracts", "type": "quantitative"}], "x": {"field": "Tracts", "title": "Number of Gentrified Tracts", "type": "quantitative"}, "y": {"field": "City", "sort": "-x", "title": "", "type": "nominal"}}, "height": 300, "title": "Cities Most Affected by Gentrification (2000-2017)", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-dc96a716b769c219b2fdaf61ba325b71": [{"City": "New York City", "Tracts": 138}, {"City": "Washington", "Tracts": 59}, {"City": "Baltimore", "Tracts": 40}, {"City": "Oakland", "Tracts": 29}, {"City": "Atlanta", "Tracts": 23}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

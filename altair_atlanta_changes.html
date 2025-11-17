@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.8.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "layer": [{"data": {"name": "data-24b7502b4969c515bf97ad8dc2bc5200"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "Group", "scale": {"domain": ["Black", "White", "Asian"], "range": ["#e74c3c", "#3498db", "#2ecc71"]}, "type": "nominal"}, "tooltip": [{"field": "Group", "type": "nominal"}, {"field": "Change", "format": ".1f", "type": "quantitative"}], "x": {"field": "Group", "title": "Demographic Group", "type": "nominal"}, "y": {"field": "Change", "title": "Median Change (percentage points)", "type": "quantitative"}}, "title": "Demographic Shifts in Gentrified Atlanta Neighborhoods"}, {"data": {"name": "data-06fd9f850666401b4599de5588b60692"}, "mark": {"type": "rule", "strokeDash": [5, 5]}, "encoding": {"y": {"field": "y", "type": "quantitative"}}}], "height": 300, "width": 400, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-24b7502b4969c515bf97ad8dc2bc5200": [{"Group": "Black", "Change": -27.072}, {"Group": "White", "Change": 16.157}, {"Group": "Asian", "Change": 0.78}], "data-06fd9f850666401b4599de5588b60692": [{"y": 0}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
